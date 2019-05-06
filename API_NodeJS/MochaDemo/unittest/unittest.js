@@ -188,7 +188,7 @@ describe('Products', () => {
                 .send(item)
                 .end((err, res) => {
                     res.should.have.status(400);
-                    res.body.should.have.property('message').eql('The key does not exist on the server');
+                    res.body.should.have.property('message').eql('Bad request !');
                     //console.log('Res:', res.body);
                     done();
                 });
