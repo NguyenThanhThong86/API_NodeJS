@@ -40,8 +40,8 @@
   
 # Testing
 #Run a test case
-npm test
+- npm test
   
   
 #Run a test case with Istanbul code coverage
-npm run nyc
+- npm run nyc
