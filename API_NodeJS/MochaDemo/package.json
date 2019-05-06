@@ -1,0 +1,30 @@
+{
+  "name": "mocha_chai",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "nyc": "nyc mocha unittest/unittest.js --timeout 10000 --exit",
+    "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
+    "test": "mocha unittest/unittest.js",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "couchbase": "^2.6.4",
+    "express": "^4.16.4",
+    "mocha": "^6.1.4",
+    "mocha-lcov-reporter": "^1.3.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.0",
+    "nyc": "^14.1.0"
+  },
+  "devDependencies": {
+    "coveralls": "^3.0.3"
+  }
+}

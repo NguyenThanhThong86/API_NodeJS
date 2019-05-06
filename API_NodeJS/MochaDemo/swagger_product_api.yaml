@@ -1,0 +1,268 @@
+swagger: '2.0'
+info:
+  description: List of Product RESTFul APIs
+  version: 1.0.0
+  title: PRODUCT RESPFul API NODEJS
+  contact:
+    email: thongnt862513@gmail.com
+host: localhost:8000 
+basePath: /dev
+tags:
+  - name: Product API
+    description: Product API
+schemes:
+  - https
+  - http
+paths:
+  /v1/products:
+    post:
+      tags:
+        - "Product"
+      summary: "Thêm sản phẩm vào cơ sở dữ liệu Couchbase"
+      description: "Thêm sản phẩm vào cơ sở dữ liệu Couchbase"
+      operationId: "postProductId"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:  
+        - name: "product_id"
+          in: query
+          required: true
+          description: "Mã sản phẩm"
+          type: string
+        - name: "product_name"
+          in: query
+          required: true
+          description: "Tên sản phẩm"
+          type: string
+        - name: "product_descprition"
+          in: query
+          required: false
+          description: "Diễn giải sản phẩm"
+          type: number
+        - name: "product_addr"
+          in: query
+          required: false
+          description: "Địa chỉ sản xuất sản phẩm"
+          type: string 
+      responses:
+        '200':
+          description: Kết quả trả về khi thêm một sản phẩm thành công!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/PostProduct'
+        '400':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError400'
+        '404':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError404'
+    get:
+      tags:
+        - "Product"
+      summary: "Liệt kê danh sách tất cả các phẩm hoặc 1 sản phẩm với product_id cụ thể"
+      description: "Liệt kê danh sách tất cả các phẩm hoặc 1 sản phẩm với product_id cụ thể"
+      operationId: "getProductId"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:  
+        - name: "product_id"
+          in: query
+          required: false
+          description: "Mã sản phẩm"
+          type: string
+      responses:
+        '200':
+          description: Kết quả trả về danh sách các sản phẩm
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/GetProduct'
+        '400':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError400'
+        '404':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError404'
+    put:
+      tags:
+        - "Product"
+      summary: "Cập nhật dữ liệu cho 1 các phẩm"
+      description: "Cập nhật dữ liệu cho 1 các phẩm"
+      operationId: "putProductId"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:  
+        - name: "product_id"
+          in: query
+          required: true
+          description: "Mã sản phẩm"
+          type: string
+        - name: "product_name"
+          in: query
+          required: true
+          description: "Tên sản phẩm"
+          type: string
+        - name: "product_descprition"
+          in: query
+          required: false
+          description: "Diễn giải sản phẩm"
+          type: number
+        - name: "product_addr"
+          in: query
+          required: false
+          description: "Địa chỉ sản xuất sản phẩm"
+          type: string 
+      responses:
+        '200':
+          description: Kết quả trả về danh sách các sản phẩm
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/PutProduct'
+        '400':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError400'
+        '404':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError404'
+    delete:
+      tags:
+        - "Product"
+      summary: "Xóa dữ liệu của 1 các phẩm"
+      description: "Xóa dữ liệu của 1 các phẩm"
+      operationId: "delêtProductId"
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:  
+        - name: "product_id"
+          in: query
+          required: true
+          description: "Mã sản phẩm"
+          type: string
+      responses:
+        '200':
+          description: Kết quả trả về danh sách các sản phẩm
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/DeleteProduct'
+        '400':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError400'
+        '404':
+          description: Kết quả trả về xử lý thất bại!
+          schema:
+            #type: array
+            #items:
+            $ref: '#/definitions/ResponseError404'
+definitions:
+  GetProduct:
+    type: array
+    items:
+      type: object
+      properties:
+        product_id:
+          type: string
+          description: Mã sản phẩm
+          example: '101'
+        roduct_name:
+          type: string
+          description: Tên sản phẩm
+          example: 'Card'
+        product_descprition:
+          type: number
+          description: Diễn giải sản phẩm
+          example: 'Card Prepaid'
+        product_addr:
+          type: number
+          description: Địa chỉ sản xuất sản phẩm
+          example: '444-446 CMT8'
+  PostProduct:
+    type: object
+    properties:
+        message:
+          type: string
+          description: Nội dung kết quả trả về
+          example: 'add data success'
+        data:
+          type: string
+          description: Id của cơ sở dự liệu Couchbase trả về
+          example: 1557149607207960576
+  PutProduct:
+    type: object
+    properties:
+        message:
+          type: string
+          description: Nội dung kết quả trả về
+          example: 'update data success'
+        data:
+          type: string
+          description: Id của cơ sở dự liệu Couchbase trả về
+          example: 1557149756402302976
+  DeleteProduct:
+    type: object
+    properties:
+        message:
+          type: string
+          description: Nội dung kết quả trả về
+          example: 'delete data success'
+        data:
+          type: string
+          description: Id của cơ sở dự liệu Couchbase trả về
+          example: 1557149756402302976
+          
+  ResponseError404:
+    type: object
+    properties:
+      errorCode:
+        type: integer
+        description: Mã lỗi
+        example: 404
+      message:
+        type: string
+        description: Nội dung lỗi
+        example: No data found !
+  ResponseError400:
+    type: object
+    properties:
+      errorCode:
+        type: integer
+        description: Mã lỗi
+        example: 400
+      message:
+        type: string
+        description: Nội dung lỗi
+        example: Bad request !
+  
+        
+  
