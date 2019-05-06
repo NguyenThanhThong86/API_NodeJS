@@ -30,7 +30,7 @@
 
 # Configuration:
 - add test, nyc elements to package.json
-- "scripts": {
+    "scripts": {
         "nyc": "nyc mocha unittest/unittest.js --timeout 10000 --exit",
         "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
         "test": "mocha unittest/unittest.js",
